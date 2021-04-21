@@ -1,0 +1,8 @@
+@media screen and (max-width: 430px) {
+  .popup__save-button_type_add-card {
+    margin-top: 36px;
+    margin-bottom: 30px;
+    width: calc(100% - 2 * 20px);
+    height: 40px;
+  }
+}

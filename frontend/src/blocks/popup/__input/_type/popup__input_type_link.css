@@ -1,0 +1,9 @@
+@media screen and (max-width: 430px) {
+  .popup__input_type_link {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 15px;
+    height: 36px;
+    width: calc(100% - 2 * 20px);
+  }
+}

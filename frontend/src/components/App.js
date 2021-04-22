@@ -36,31 +36,47 @@ function App() {
     const [ email, setEmail ] = React.useState('');
     const history = useHistory();
 
-    const handleTokenCheck = React.useCallback(() => {
-        const jwt = localStorage.getItem('token');
-        if (jwt) {
-            auth.checkToken(jwt)
-                .then((res) => {
-                    if (res.data) {
-                        setLoggedIn(true);
-                        setEmail(res.data.email);
-                        history.push('/');
-                    }
-                })
-                .catch((err) => {
-                    history.push('sign-in');
-                    if (err === 400) {
-                        console.log(`Ошибка: ${err} - Не передано одно из полей`)
-                    } else if (err === 401) {
-                        console.log(`Ошибка: ${err} - Пользователь с email не найден`)
-                    }
-                })
-        }
+    const handleCookiesCheck = React.useCallback(() => {
+        auth.checkCookies()
+          .then(() => {
+              setLoggedIn(true);
+              history.push('/');
+          })
+          .catch((err) => {
+              history.push('sign-in');
+              console.log(err);
+          });
     }, [history]);
+
+    // const handleTokenCheck = React.useCallback(() => {
+    //     const jwt = localStorage.getItem('token');
+    //     if (jwt) {
+    //         auth.checkToken(jwt)
+    //             .then((res) => {
+    //                 if (res.data) {
+    //                     setLoggedIn(true);
+    //                     setEmail(res.data.email);
+    //                     history.push('/');
+    //                 }
+    //             })
+    //             .catch((err) => {
+    //                 history.push('sign-in');
+    //                 if (err === 400) {
+    //                     console.log(`Ошибка: ${err} - Не передано одно из полей`)
+    //                 } else if (err === 401) {
+    //                     console.log(`Ошибка: ${err} - Пользователь с email не найден`)
+    //                 }
+    //             })
+    //     }
+    // }, [history]);
 
     // React.useEffect(() => {
     //     handleTokenCheck()
     // }, [handleTokenCheck]);
+
+    React.useEffect(() => {
+        handleCookiesCheck()
+    }, [handleCookiesCheck]);
 
     React.useEffect(() => {
         Promise.all([api.getUserData(), api.getInitialCards()])
@@ -97,13 +113,10 @@ function App() {
 
     function handleLogin(data) {
         auth.login(data)
-            .then((res) => {
-                if (res.token) {
-                    localStorage.setItem('token', res.token);
-                    setLoggedIn(true);
-                    setEmail(data.email);
-                    history.push('/');
-                }
+            .then(() => {
+                setLoggedIn(true);
+                setEmail(data.email);
+                history.push('/');
             })
             .catch((err) => {
                 setStatus('Что-то пошло не так!\n' + 'Попробуйте ещё раз.');
@@ -118,9 +131,14 @@ function App() {
     }
 
     function handleLogout() {
-        localStorage.removeItem('token');
-        setLoggedIn(false);
-        setEmail('');
+        auth.logout()
+          .then(() => {
+              setLoggedIn(false);
+              setEmail('');
+          })
+          .catch((err) => {
+              console.log(err);
+          })
     }
 
 

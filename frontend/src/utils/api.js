@@ -6,14 +6,16 @@ class Api {
 
     getUserData() {
         return fetch(`${this.baseUrl}/users/me`, {
-            headers: this.headers
+            headers: this.headers,
+            credentials: 'include',
         })
             .then(res => this._getResponse(res))
     }
 
     getInitialCards() {
         return fetch (`${this.baseUrl}/cards`, {
-            headers: this.headers
+            headers: this.headers,
+            credentials: 'include',
         })
             .then(res => this._getResponse(res))
     }
@@ -25,7 +27,8 @@ class Api {
             body: JSON.stringify({
                 name: name,
                 about: about
-            })
+            }),
+            credentials: 'include',
         })
             .then(res => this._getResponse(res))
     }
@@ -37,7 +40,8 @@ class Api {
             body: JSON.stringify({
                 name: name,
                 link: link
-            })
+            }),
+            credentials: 'include',
         })
             .then(res => this._getResponse(res))
     }
@@ -46,6 +50,7 @@ class Api {
         return fetch(`${this.baseUrl}/cards/${cardId}`, {
             method: 'DELETE',
             headers: this.headers,
+            credentials: 'include',
         })
             .then(res => this._getResponse(res))
     }
@@ -56,7 +61,8 @@ class Api {
             headers: this.headers,
             body: JSON.stringify({
                 avatar: data.avatar
-            })
+            }),
+            credentials: 'include',
         })
             .then(res => this._getResponse(res))
     }
@@ -73,13 +79,15 @@ class Api {
         if (!isLiked) {
             return fetch(`${this.baseUrl}/cards/likes/${cardId} `, {
                 method: 'PUT',
-                headers: this.headers
+                headers: this.headers,
+                credentials: 'include',
             })
                 .then(res => this._getResponse(res));
         } else {
             return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
                 method: 'DELETE',
-                headers: this.headers
+                headers: this.headers,
+                credentials: 'include',
             })
                 .then(res => this._getResponse(res));
         }

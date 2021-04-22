@@ -14,7 +14,8 @@ export const register = ({ email, password }) => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ password, email })
+        body: JSON.stringify({ password, email }),
+        credentials: 'include',
     })
         .then(getResponse)
 };
@@ -25,7 +26,8 @@ export const login = ({ email, password }) => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ password, email })
+        body: JSON.stringify({ password, email }),
+        credentials: 'include',
     })
         .then(getResponse)
 };
@@ -35,7 +37,30 @@ export const checkToken = (token) => {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",
-        }
+        },
+        credentials: 'include',
     })
         .then(getResponse)
+};
+
+export const logout = () => {
+    fetch(`${BASE_URL}/logout`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        credentials: 'include',
+    })
+      .then(getResponse)
+};
+
+export const checkCookies = () => {
+    return fetch(`${BASE_URL}/users/me`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        credentials: 'include',
+    })
+      .then(getResponse)
 };

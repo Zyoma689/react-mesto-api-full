@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 const { BadRequestError } = require('../errors/400_bad-request-error');
+const { UnauthorizedError } = require('../errors/401_unauthorized-error');
 const { NotFoundError } = require('../errors/404_not-found-error');
 const { ConflictError } = require('../errors/409_conflict-error');
 
@@ -126,6 +127,17 @@ const login = (req, res, next) => {
     .catch(next);
 };
 
+const logout = (req, res, next) => {
+  User.findById(req.user._id)
+    .then((user) => {
+      if (!user) {
+        return next(new NotFoundError('Пользователь не найден'));
+      }
+      return res.clearCookie('jwt').send({message: 'До скорой встречи!'});
+    })
+    .catch(next);
+};
+
 module.exports = {
   getUsers,
   getUserById,
@@ -134,4 +146,5 @@ module.exports = {
   updateUser,
   updateAvatar,
   login,
+  logout,
 };

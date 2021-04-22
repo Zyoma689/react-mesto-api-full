@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'http://api.ivart.students.nomoredomains.icu';
 
 const getResponse = (res) => {
     if (res.ok) {
@@ -35,7 +35,6 @@ export const checkToken = (token) => {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",
-            "Authorization" : `Bearer ${token}`
         }
     })
         .then(getResponse)

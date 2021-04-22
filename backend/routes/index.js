@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { createUser, login } = require('../controllers/users');
+const { createUser, login, logout } = require('../controllers/users');
 const { createUserValidator, loginValidator } = require('../utils/celebrate-validators');
 const auth = require('../middlewares/auth');
 const userRouter = require('./users');
@@ -9,6 +9,7 @@ const { NotFoundError } = require('../errors/404_not-found-error');
 router.post('/signup', createUserValidator, createUser);
 router.post('/signin', loginValidator, login);
 router.use(auth);
+router.post('/logout', logout);
 router.use('/users', userRouter);
 router.use('/cards', cardRouter);
 router.use('*', () => {

@@ -58,9 +58,9 @@ function App() {
         }
     }, [history]);
 
-    React.useEffect(() => {
-        handleTokenCheck()
-    }, [handleTokenCheck]);
+    // React.useEffect(() => {
+    //     handleTokenCheck()
+    // }, [handleTokenCheck]);
 
     React.useEffect(() => {
         Promise.all([api.getUserData(), api.getInitialCards()])

@@ -87,9 +87,8 @@ class Api {
 }
 
 const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-19',
+    baseUrl: 'http://api.ivart.students.nomoredomains.icu',
     headers: {
-        authorization: 'ee997593-23fa-4bcc-b338-c6e6a2cbbaea',
         'Content-Type': 'application/json'
     }
 });

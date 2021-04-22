@@ -43,7 +43,7 @@ function App() {
               history.push('/');
           })
           .catch((err) => {
-              history.push('sign-in');
+              history.push('signin');
               console.log(err);
           });
     }, [history]);
@@ -94,7 +94,7 @@ function App() {
         auth.register(data)
             .then((res) => {
                 if (res.data.email) {
-                    history.push('/sign-in');
+                    history.push('/signin');
                     setStatus('Вы успешно зарегистрировались!');
                     setInfoTooltipImage(successImage);
                     setInfoTooltipOpen(true);

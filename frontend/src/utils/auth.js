@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://api.ivart.students.nomoredomains.icu';
+export const BASE_URL = 'https://api.ivart.students.nomoredomains.icu';
 
 const getResponse = (res) => {
     if (res.ok) {

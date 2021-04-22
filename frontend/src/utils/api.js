@@ -95,10 +95,10 @@ class Api {
 }
 
 const api = new Api({
-    baseUrl: 'http://api.ivart.students.nomoredomains.icu',
+    baseUrl: 'https://api.ivart.students.nomoredomains.icu',
     headers: {
         'Content-Type': 'application/json'
     }
 });
 
-export default api
+export default api;

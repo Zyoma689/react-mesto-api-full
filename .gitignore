@@ -33,3 +33,5 @@ build
 
 yarn-debug.log*
 yarn-error.log*
+/backend/error.log
+

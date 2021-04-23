@@ -1,5 +1,5 @@
-// const BASE_URL = 'https://api.ivart.students.nomoredomains.icu';
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://api.ivart.students.nomoredomains.icu';
+// const BASE_URL = 'http://localhost:3000';
 
 const getResponse = (res) => {
     if (res.ok) {
@@ -10,8 +10,6 @@ const getResponse = (res) => {
                 throw new Error(err.message);
             })
     }
-
-    // return Promise.reject(`Ошибка: ${res.status}`);
 };
 
 export const register = ({ email, password }) => {
@@ -37,17 +35,6 @@ export const login = ({ email, password }) => {
     })
         .then(getResponse)
 };
-
-// export const checkToken = (token) => {
-//     return fetch(`${BASE_URL}/users/me`, {
-//         method: 'GET',
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         credentials: 'include',
-//     })
-//         .then(getResponse)
-// };
 
 export const logout = () => {
     return fetch(`${BASE_URL}/logout`, {

@@ -1,5 +1,5 @@
-// const BASE_URL = 'https://api.ivart.students.nomoredomains.icu';
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://api.ivart.students.nomoredomains.icu';
+// const BASE_URL = 'http://localhost:3000';
 
 class Api {
     constructor(options) {
@@ -79,11 +79,6 @@ class Api {
                   throw new Error(err.message);
               })
         }
-        // return Promise.reject(new Error(`Ошибка: ${res.status}`));
-        // console.log(res);
-
-        // return Promise.reject(`Ошибка: ${res.status}`);
-        // return Promise.reject(res);
     }
 
     changeLikeCardStatus(cardId, isLiked) {

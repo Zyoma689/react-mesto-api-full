@@ -9,9 +9,7 @@ const { NotFoundError } = require('../errors/404_not-found-error');
 router.get('/signin', cookiesCheck);
 router.post('/signup', createUserValidator, createUser);
 router.post('/signin', loginValidator, login);
-// router.get('/check', cookiesCheck);
 router.use(auth);
-
 router.post('/logout', logout);
 router.use('/users', userRouter);
 router.use('/cards', cardRouter);

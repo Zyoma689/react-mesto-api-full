@@ -1,4 +1,14 @@
-# react-mesto-api-full
-Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположите в директории `backend/`, а фронтенд - в `frontend/`. 
+# Проектная работа  "Mesto" (Full Api) в курсе Веб-разработки от Яндекс.Практикум
+## Описание проекта и функциональность:
+Проект представляет собой сервис `Mesto` интерактивную страницу, куда можно добавлять фотографии, удалять их и ставить лайки.
+
+Репозиторий для приложения проекта `Mesto`, включает фронтенд и бэкенд части приложения.
+Бэкенд расположен в директории `backend/`, а фронтенд - в `frontend/`. 
   
-Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
+## Ссылки на проект:
+##### Frontend:
+* [`http://ivart.students.nomoredomains.icu`](http://ivart.students.nomoredomains.icu');
+* [`https://ivart.students.nomoredomains.icu`](https://ivart.students.nomoredomains.icu);
+##### Backend:
+* [`http://api.ivart.students.nomoredomains.icu`](http://api.ivart.students.nomoredomains.icu');
+* [`https://api.ivart.students.nomoredomains.icu`](https://api.ivart.students.nomoredomains.icu);

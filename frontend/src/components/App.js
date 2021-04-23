@@ -45,7 +45,6 @@ function App() {
                     history.push('/signin');
                 } else if (res.message === 'OK') {
                     setLoggedIn(true);
-                    // setEmail(res.email);
                     history.push('/');
                 }
             })
@@ -55,62 +54,9 @@ function App() {
             })
     }, [history]);
 
-    // const handleCookiesCheck = ()=> {
-    //     auth.cookiesCheck()
-    //       .then(() => {
-    //           setLoggedIn(true);
-    //       })
-    //       .catch((err) => {
-    //           setLoggedIn(false);
-    //           console.log(err);
-    //       });
-    // };
-
-    // const handleTokenCheck = React.useCallback(() => {
-    //     const jwt = localStorage.getItem('token');
-    //     if (jwt) {
-    //         auth.checkToken(jwt)
-    //             .then((res) => {
-    //                 if (res.data) {
-    //                     setLoggedIn(true);
-    //                     setEmail(res.data.email);
-    //                     history.push('/');
-    //                 }
-    //             })
-    //             .catch((err) => {
-    //                 history.push('sign-in');
-    //                 if (err === 400) {
-    //                     console.log(`Ошибка: ${err} - Не передано одно из полей`)
-    //                 } else if (err === 401) {
-    //                     console.log(`Ошибка: ${err} - Пользователь с email не найден`)
-    //                 }
-    //             })
-    //     }
-    // }, [history]);
-
-    // React.useEffect(() => {
-    //     handleTokenCheck()
-    // }, [handleTokenCheck]);
-
     React.useEffect(() => {
         handleCookiesCheck()
     }, [handleCookiesCheck]);
-
-    // function getData() {
-    //     if (!loggedIn) {
-    //         return;
-    //     }
-    //     Promise.all([api.getUserData(), api.getInitialCards()])
-    //         .then((values) => {
-    //             const [userData, initialCards] = values;
-    //             setCurrentUser(userData);
-    //             setCards(initialCards);
-    //             history.push('/');
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // }
 
     React.useEffect(() => {
         if (!loggedIn) {
@@ -255,7 +201,6 @@ function App() {
             })
             .finally(() => {
                 setIsLoading(false);
-                // closeAllPopups();
             });
     }
 
@@ -272,7 +217,6 @@ function App() {
             })
             .finally(() => {
                 setIsLoading(false);
-                // closeAllPopups();
             });
     }
 
@@ -289,7 +233,6 @@ function App() {
             })
             .finally(() => {
                 setIsLoading(false);
-                // closeAllPopups();
             });
     }
 

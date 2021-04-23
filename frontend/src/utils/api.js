@@ -1,3 +1,6 @@
+// const BASE_URL = 'https://api.ivart.students.nomoredomains.icu';
+const BASE_URL = 'http://localhost:3000';
+
 class Api {
     constructor(options) {
         this.baseUrl = options.baseUrl;
@@ -70,21 +73,29 @@ class Api {
     _getResponse(res) {
         if (res.ok) {
             return(res.json());
+        } else {
+            return res.json()
+              .then((err) => {
+                  throw new Error(err.message);
+              })
         }
+        // return Promise.reject(new Error(`Ошибка: ${res.status}`));
+        // console.log(res);
 
-        return Promise.reject(`Ошибка: ${res.status}`);
+        // return Promise.reject(`Ошибка: ${res.status}`);
+        // return Promise.reject(res);
     }
 
     changeLikeCardStatus(cardId, isLiked) {
         if (!isLiked) {
-            return fetch(`${this.baseUrl}/cards/likes/${cardId} `, {
+            return fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
                 method: 'PUT',
                 headers: this.headers,
                 credentials: 'include',
             })
                 .then(res => this._getResponse(res));
         } else {
-            return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+            return fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
                 method: 'DELETE',
                 headers: this.headers,
                 credentials: 'include',
@@ -95,7 +106,7 @@ class Api {
 }
 
 const api = new Api({
-    baseUrl: 'https://api.ivart.students.nomoredomains.icu',
+    baseUrl: BASE_URL,
     headers: {
         'Content-Type': 'application/json'
     }

@@ -14,22 +14,22 @@ export default function Header(props) {
                             <Link
                                 className="header__sign-out"
                                 onClick={props.onLogout}
-                                to="/sign-in">Выйти
+                                to="/signin">Выйти
                             </Link>
                         </div>
                     </Route>
                 )
             }
-            <Route path="/sign-in">
+            <Route path="/signin">
                 <Link
                     className="header__link"
-                    to="/sign-up">Регистрация
+                    to="/signup">Регистрация
                 </Link>
             </Route>
-            <Route path="/sign-up">
+            <Route path="/signup">
                 <Link
                     className="header__link"
-                    to="/sign-in">Войти
+                    to="/signin">Войти
                 </Link>
             </Route>
         </header>

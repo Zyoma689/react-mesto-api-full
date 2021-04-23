@@ -1,11 +1,17 @@
-export const BASE_URL = 'https://api.ivart.students.nomoredomains.icu';
+// const BASE_URL = 'https://api.ivart.students.nomoredomains.icu';
+const BASE_URL = 'http://localhost:3000';
 
 const getResponse = (res) => {
     if (res.ok) {
         return(res.json());
+    } else {
+        return res.json()
+            .then((err) => {
+                throw new Error(err.message);
+            })
     }
 
-    return Promise.reject(res.status);
+    // return Promise.reject(`Ошибка: ${res.status}`);
 };
 
 export const register = ({ email, password }) => {
@@ -32,9 +38,20 @@ export const login = ({ email, password }) => {
         .then(getResponse)
 };
 
-export const checkToken = (token) => {
-    return fetch(`${BASE_URL}/users/me`, {
-        method: 'GET',
+// export const checkToken = (token) => {
+//     return fetch(`${BASE_URL}/users/me`, {
+//         method: 'GET',
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         credentials: 'include',
+//     })
+//         .then(getResponse)
+// };
+
+export const logout = () => {
+    return fetch(`${BASE_URL}/logout`, {
+        method: 'POST',
         headers: {
             "Content-Type": "application/json",
         },
@@ -43,19 +60,8 @@ export const checkToken = (token) => {
         .then(getResponse)
 };
 
-export const logout = () => {
-    fetch(`${BASE_URL}/logout`, {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        credentials: 'include',
-    })
-      .then(getResponse)
-};
-
-export const checkCookies = () => {
-    return fetch(`${BASE_URL}/users/me`, {
+export const cookiesCheck = () => {
+    return fetch(`${BASE_URL}/signin`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",

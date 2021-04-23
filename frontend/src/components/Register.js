@@ -48,7 +48,7 @@ export default function Register(props) {
             </form>
             <Link
                 className="auth__link"
-                to="/sign-in" >Уже зарегистрированы? Войти
+                to="/signin" >Уже зарегистрированы? Войти
             </Link>
         </section>
     )

@@ -4,11 +4,12 @@
   "description": "Проект представляет собой сервис Mesto: интерактивную страницу, куда можно добавлять фотографии, удалять их и ставить лайки.",
   "author": "Artem Ivanov",
   "private": true,
-  "homepage": "https://api.ivart.students.nomoredomains.icu",
+  "homepage": "http://localhost:3000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
+    "dotenv": "^8.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",

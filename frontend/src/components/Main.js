@@ -36,7 +36,7 @@ export default function Main(props) {
             <section className="cards content__cards">
                 <ul className="cards__list">
                     {
-                        props.cards.map((card) => (
+                        props.cards.slice().reverse().map((card) => (
                             <Card
                                 key={card._id}
                                 card={card}

@@ -3,9 +3,9 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 const { BadRequestError } = require('../errors/400_bad-request-error');
-const { UnauthorizedError } = require('../errors/401_unauthorized-error');
 const { NotFoundError } = require('../errors/404_not-found-error');
 const { ConflictError } = require('../errors/409_conflict-error');
+const { UnauthorizedError } = require('../errors/401_unauthorized-error');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
@@ -122,7 +122,7 @@ const login = (req, res, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
-      res.cookie('jwt', token, { maxAge: 3600000, httpOnly: true, sameSite: true }).end();
+      res.cookie('jwt', token, { maxAge: 3600000, httpOnly: true, sameSite: true }).status(200).send({ message: 'OK'});
     })
     .catch(next);
 };
@@ -133,9 +133,23 @@ const logout = (req, res, next) => {
       if (!user) {
         return next(new NotFoundError('Пользователь не найден'));
       }
-      return res.clearCookie('jwt').send({message: 'До скорой встречи!'});
+      return res.clearCookie('jwt').status(200).send({ message: 'До скорой встречи!' });
     })
     .catch(next);
+};
+
+const cookiesCheck = (req, res) => {
+  const cookie = req.cookies;
+  if (!cookie) {
+    throw new UnauthorizedError('Необходима авторизация');
+  }
+  const token = cookie.jwt;
+  try {
+    jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
+    res.send({ message: 'OK'})
+  } catch (err) {
+    res.send({ message: 'Unauthorized' });
+  }
 };
 
 module.exports = {
@@ -147,4 +161,5 @@ module.exports = {
   updateAvatar,
   login,
   logout,
+  cookiesCheck,
 };

@@ -6,6 +6,8 @@
 Бэкенд расположен в директории `backend/`, а фронтенд - в `frontend/`. 
   
 ## Ссылки на проект:
+##### Публичный IP-адрес сервера:
+* [`178.154.196.119`](http://178.154.196.119);
 ##### Frontend:
 * [`https://ivart.students.nomoredomains.icu`](https://ivart.students.nomoredomains.icu);
 ##### Backend:

@@ -122,7 +122,7 @@ const login = (req, res, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
-      res.cookie('jwt', token, { maxAge: 3600000, httpOnly: true, sameSite: true }).status(200).send({ message: 'OK'});
+      res.cookie('jwt', token, { maxAge: 3600000, httpOnly: true, sameSite: true }).status(200).send({ message: 'OK' });
     })
     .catch(next);
 };
@@ -146,7 +146,7 @@ const cookiesCheck = (req, res) => {
   const token = cookie.jwt;
   try {
     jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
-    res.send({ message: 'OK'})
+    res.send({ message: 'OK' });
   } catch (err) {
     res.send({ message: 'Unauthorized' });
   }

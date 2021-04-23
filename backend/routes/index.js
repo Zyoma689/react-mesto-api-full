@@ -1,5 +1,8 @@
 const router = require('express').Router();
-const { createUser, login, logout, cookiesCheck } = require('../controllers/users');
+const {
+  createUser, login, logout, cookiesCheck,
+} = require('../controllers/users');
+
 const { createUserValidator, loginValidator } = require('../utils/celebrate-validators');
 const auth = require('../middlewares/auth');
 const userRouter = require('./users');

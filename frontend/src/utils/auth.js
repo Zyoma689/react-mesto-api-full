@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.ivart.students.nomoredomains.icu';
+const BASE_URL = 'http://api.ivart.students.nomoredomains.icu';
 // const BASE_URL = 'http://localhost:3000';
 
 const getResponse = (res) => {
@@ -48,7 +48,7 @@ export const logout = () => {
 };
 
 export const cookiesCheck = () => {
-    return fetch(`${BASE_URL}/signin`, {
+    return fetch(`${BASE_URL}/check`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",

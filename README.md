@@ -7,8 +7,6 @@
   
 ## Ссылки на проект:
 ##### Frontend:
-* [`http://ivart.students.nomoredomains.icu`](http://ivart.students.nomoredomains.icu');
 * [`https://ivart.students.nomoredomains.icu`](https://ivart.students.nomoredomains.icu);
 ##### Backend:
-* [`http://api.ivart.students.nomoredomains.icu`](http://api.ivart.students.nomoredomains.icu');
 * [`https://api.ivart.students.nomoredomains.icu`](https://api.ivart.students.nomoredomains.icu);

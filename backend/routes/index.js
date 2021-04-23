@@ -6,7 +6,7 @@ const userRouter = require('./users');
 const cardRouter = require('./cards');
 const { NotFoundError } = require('../errors/404_not-found-error');
 
-router.get('/signin', cookiesCheck);
+router.get('/check', cookiesCheck);
 router.post('/signup', createUserValidator, createUser);
 router.post('/signin', loginValidator, login);
 router.use(auth);

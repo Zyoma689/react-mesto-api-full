@@ -27,9 +27,9 @@
 <h4 align=center>Интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.</h4>
 
 <h3 align="center">
-  <a href=".." title="Link">Demo</a> 
+  <a href="#" title="Link">Demo<ruby>&nbsp;<rt>Скоро</rt></ruby></a> 
   •
-  <a href="https://iv-a.github.io/react-burger/">GitHubPages</a>
+  <a href="#">GitHubPages<ruby>&nbsp;<rt>Скоро</rt></ruby></a>
 </h3>
 
 <h1 id="about">О проекте</h1>
